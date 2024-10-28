@@ -42,7 +42,7 @@ RUN wget -nv https://storage.googleapis.com/download.tensorflow.org/example_imag
     && chmod -R o+rX /var/lib/cats_and_dogs_filtered
 
 # copy the repo source (e.g. notebooks) to the container image and install dependencies
-ARG MWLR_DS_HASH="95110c6c324c07e9ca0f525612ab036aec776106" # TODO - update at end of the day
+ARG MWLR_DS_HASH="4003bc5054e903b35b606059d632d9362b5d8d4e" # BIM 29/10/2024 12:02pm
 RUN git clone https://github.com/manaakiwhenua/deepseg_workshop.git /opt/mwlr_ds_workshop \
     && cd /opt/mwlr_ds_workshop \
     && git checkout $MWLR_DS_HASH \
