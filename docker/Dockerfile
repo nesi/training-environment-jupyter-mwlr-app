@@ -1,5 +1,9 @@
 FROM ubuntu:22.04
 
+# Forked from ML102
+# - replace urls and difrectories
+# - replace commit hash
+
 # install system dependencies
 # TODO: move ldap-utils, libnss-ldapd, libpam-ldapd, nscd, nslcd to base image??
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -38,10 +42,10 @@ RUN wget -nv https://storage.googleapis.com/download.tensorflow.org/example_imag
     && chmod -R o+rX /var/lib/cats_and_dogs_filtered
 
 # copy the repo source (e.g. notebooks) to the container image and install dependencies
-ARG ML102_HASH="39f654a10ddcfaa06420c12173f6053ea9963d26"
-RUN git clone https://github.com/nesi/ml102_workshop.git /opt/ml102_workshop \
-    && cd /opt/ml102_workshop \
-    && git checkout $ML102_HASH \
+ARG MWLR_DS_HASH="3d4d78bd405c7751cba4fb7d04d362e8fb522dac" # BIM 29/10/2024 1:27pm
+RUN git clone https://github.com/manaakiwhenua/deepseg_workshop.git /opt/mwlr_ds_workshop \
+    && cd /opt/mwlr_ds_workshop \
+    && git checkout $MWLR_DS_HASH \
     && pip3 --no-cache-dir install -r requirements.txt \
     && pip3 --no-cache-dir install jupyterlab \
-    && rm -rf /opt/ml102_workshop/.git
+    && rm -rf /opt/mwlr_ds_workshop/.git
