@@ -5,7 +5,6 @@ exec &> >(tee -a "${LOG_DIR}/pod.log")
 # Benchmark info
 echo "TIMING - Starting main script at: $(date)"
 
-cp /ood/ondemand_config.py ./
 
 # Set working directory to home directory
 cd "${HOME}"
@@ -20,4 +19,4 @@ echo "TIMING - Starting jupyter at: $(date)"
 # Launch the Jupyter Notebook Server
 set -x
 rsync --ignore-existing -avz /opt/mwlr_ds_workshop/ ~/mwlr_ds_workshop/
-jupyter lab --config="/ood/ondemand_config.py"
+jupyter lab --config="${CONFIG_FILE}"
